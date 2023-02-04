@@ -1,5 +1,7 @@
 import unittest
-from encrypter import *
+import sys
+sys.path.insert(0, "/home/jatomixo/Code/PythonEncrypter")
+from src.encrypter import * 
 
 class TestEncrypter(unittest.TestCase):
 
