@@ -1,0 +1,9 @@
+ - Encryption/Decryption methods
+  - Popular/Already invented
+   - Binary
+   - ASCII
+   - Numeral / Different bases
+   - Reverse string/words
+   - Morse Code
+  - Own Code
+   - With key
