@@ -21,8 +21,11 @@ class Decrypter:
     
     # Generate words
     for binary in range(len(binary_parsed)):
+      actual_char = 0
       for i in range(len(binary_parsed[binary])):
-        decrypted_message += chr(ord(binary[i]) * pow(2, i))
+        actual_char += int(binary_parsed[binary][i]) * pow(2, len(binary_parsed[binary]) - (i + 1))
+      
+      decrypted_message += chr(int(actual_char))
       
       if len(decrypted_message) - 1 != binary:
         decrypted_message += " "

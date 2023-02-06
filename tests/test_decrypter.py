@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.insert(0, "/home/jatomixo/Code/PythonEncrypter")
+sys.path.insert(0, "D:/Miguel/Programas/PythonEncrypter")
 from src.decrypter import *
 
 class TestDecrypter(unittest.TestCase):
