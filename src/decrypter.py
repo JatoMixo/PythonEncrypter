@@ -3,10 +3,10 @@ from math import pow
 
 class Decrypter:
 
-  def CesarDecryption(self, message, jumps=3):
-    return encrypter.Encrypter().CesarEncryption(message, -jumps)
+  def cesar_decryption(self, message, jumps=3):
+    return encrypter.Encrypter().cesar_encryption(message, -jumps)
 
-  def BinaryDecryption(self, message):
+  def binary_decryption(self, message):
     binary_parsed = [""]
     decrypted_message = ""
 

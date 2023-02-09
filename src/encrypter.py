@@ -16,7 +16,7 @@ def decimal_to_binary(decimal):
 
 class Encrypter:
 
-  def CesarEncryption(self, message, jumps=3):
+  def cesar_encryption(self, message, jumps=3):
 
     new_message = ""
 
@@ -25,7 +25,7 @@ class Encrypter:
 
     return new_message
 
-  def BinaryEncryption(self, message):
+  def binary_encryption(self, message):
 
     binary = ""
 
@@ -35,4 +35,11 @@ class Encrypter:
         binary += " "
     
     return binary
+  
+  def numeral_encryption(self, message, original_base=10, new_base=16):
 
+    encrypted_message = ""
+
+
+
+    return encrypted_message
