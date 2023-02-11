@@ -37,7 +37,7 @@ class Encrypter:
     
     return binary
   
-  def numeral_encryption(self, message, original_base=10, new_base=16):
+  '''def numeral_encryption(self, message, original_base=10, new_base=16):
 
     encrypted_message = ""
 
@@ -46,7 +46,7 @@ class Encrypter:
       if message.index(i) != len(message) - 1:
         encrypted_message += " "
 
-    return encrypted_message
+    return encrypted_message'''
 
   def reverse_encryption(self, message, only_words=False):
     
