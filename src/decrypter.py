@@ -1,4 +1,5 @@
 from src import encrypter
+from src import words_parser
 from math import pow
 
 class Decrypter:
@@ -7,18 +8,9 @@ class Decrypter:
     return encrypter.Encrypter().cesar_encryption(message, -jumps)
 
   def binary_decryption(self, message):
-    binary_parsed = [""]
+    binary_parsed = words_parser.parse_words(message)
     decrypted_message = ""
 
-    # Separate words
-    for i in range(len(message)):
-
-      if message[i] == " ":
-        binary_parsed.append("")
-        continue
-
-      binary_parsed[len(binary_parsed) - 1] += message[i]
-    
     # Generate words
     for binary in range(len(binary_parsed)):
       actual_char = 0
@@ -31,3 +23,6 @@ class Decrypter:
         decrypted_message += " "
     
     return decrypted_message
+  
+  def reverse_decryption(self, message,  only_words=False):
+    return encrypter.Encrypter().reverse_encryption(message, only_words)

@@ -1,8 +1,8 @@
  - Encryption/Decryption methods
   - Popular/Already invented
    - Numeral / Different bases
-   - Reverse string/words
    - Morse Code
    - AES Code
+   - Base64
   - Own Code
    - With key

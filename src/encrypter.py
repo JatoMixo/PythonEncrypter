@@ -1,4 +1,5 @@
 from math import floor
+from src import words_parser
 
 def decimal_to_binary(decimal):
 
@@ -40,6 +41,28 @@ class Encrypter:
 
     encrypted_message = ""
 
+    for i in message:
+      encrypted_message += str(ord(i))
+      if message.index(i) != len(message) - 1:
+        encrypted_message += " "
+
+    return encrypted_message
+
+  def reverse_encryption(self, message, only_words=False):
+    
+    encrypted_message = ""
+
+    if not(only_words):
+      for i in range(len(message)):
+        encrypted_message += message[len(message) - (i + 1)]
+      
+      return encrypted_message
+    
+    words = words_parser.parse_words(message)
+    for i in range(len(words)):
+      encrypted_message += self.reverse_encryption(words[i])
+      if i != len(words) - 1:
+        encrypted_message += " "
 
 
     return encrypted_message
