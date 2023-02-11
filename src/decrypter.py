@@ -1,14 +1,14 @@
-from src import encrypter
-from src import words_parser
+from encrypter import Encrypter
+from words_parser import parse_words
 from math import pow
 
 class Decrypter:
 
   def cesar_decryption(self, message, jumps=3):
-    return encrypter.Encrypter().cesar_encryption(message, -jumps)
+    return Encrypter().cesar_encryption(message, -jumps)
 
   def binary_decryption(self, message):
-    binary_parsed = words_parser.parse_words(message)
+    binary_parsed = parse_words(message)
     decrypted_message = ""
 
     # Generate words
@@ -25,4 +25,4 @@ class Decrypter:
     return decrypted_message
   
   def reverse_decryption(self, message,  only_words=False):
-    return encrypter.Encrypter().reverse_encryption(message, only_words)
+    return Encrypter().reverse_encryption(message, only_words)

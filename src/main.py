@@ -1,5 +1,6 @@
 import customtkinter
 import encrypter
+import decrypter
 
 def main():
   customtkinter.set_appearance_mode("dark")
@@ -7,6 +8,7 @@ def main():
 
   root = customtkinter.CTk()
   root.geometry("500x350")
+  root.wm_title("CatCryption")
 
   root.mainloop()
   pass

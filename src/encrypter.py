@@ -1,5 +1,5 @@
 from math import floor
-from src import words_parser
+from words_parser import parse_words
 
 def decimal_to_binary(decimal):
 
@@ -58,7 +58,7 @@ class Encrypter:
       
       return encrypted_message
     
-    words = words_parser.parse_words(message)
+    words = parse_words(message)
     for i in range(len(words)):
       encrypted_message += self.reverse_encryption(words[i])
       if i != len(words) - 1:
