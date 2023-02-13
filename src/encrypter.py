@@ -1,5 +1,15 @@
 from math import floor
-from words_parser import parse_words
+from src.words_parser import parse_words
+from src.morse_translated import morse_translation
+
+def process_last_element(index, array, addition):
+
+  IS_LAST_ELEMENT = index == len(array) - 1
+
+  if not(IS_LAST_ELEMENT):
+    return addition
+  
+  return ""
 
 def decimal_to_binary(decimal):
 
@@ -37,17 +47,6 @@ class Encrypter:
     
     return binary
   
-  '''def numeral_encryption(self, message, original_base=10, new_base=16):
-
-    encrypted_message = ""
-
-    for i in message:
-      encrypted_message += str(ord(i))
-      if message.index(i) != len(message) - 1:
-        encrypted_message += " "
-
-    return encrypted_message'''
-
   def reverse_encryption(self, message, only_words=False):
     
     encrypted_message = ""
@@ -64,5 +63,21 @@ class Encrypter:
       if i != len(words) - 1:
         encrypted_message += " "
 
+
+    return encrypted_message
+  
+  def morse_encryption(self, message):
+
+    encrypted_message = ""
+    words_parsed = parse_words(message)
+
+    for index_of_word in range(len((words_parsed))):
+
+      word = words_parsed[index_of_word]
+
+      for index, char in enumerate(word):
+        encrypted_message += morse_translation[char.upper()] + process_last_element(index, word, " ")
+
+      encrypted_message += process_last_element(index_of_word, words_parsed, "  ") 
 
     return encrypted_message

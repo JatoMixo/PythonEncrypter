@@ -10,6 +10,12 @@ def main():
   root.geometry("500x350")
   root.wm_title("CatCryption")
 
+  title_label = customtkinter.CTkLabel(master=root, text="CatCryption", font=("Mononoki NF", 40))
+  title_label.pack()
+
+  main_frame = customtkinter.CTkFrame(master=root)
+  main_frame.pack()
+
   root.mainloop()
   pass
 

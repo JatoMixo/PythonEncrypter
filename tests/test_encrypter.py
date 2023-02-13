@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.insert(0, "D:/Miguel/Programas/PythonEncrypter")
+# sys.path.insert(0, "D:/Miguel/Programas/PythonEncrypter")
 from src.encrypter import * 
 
 class TestEncrypter(unittest.TestCase):
@@ -28,5 +28,10 @@ class TestEncrypter(unittest.TestCase):
     self.set_defaults()
     self.assertEqual(self.encrypter.reverse_encryption("ABCD EFGH"), "HGFE DCBA")
     self.assertEqual(self.encrypter.reverse_encryption("ABCD EFGH", True), "DCBA HGFE")
+  
+  def test_morse_encryption(self):
+    self.set_defaults()
+    self.assertEqual(self.encrypter.morse_encryption("ABC DE"), ".- -... -.-.  -.. .")
+    self.assertEqual(self.encrypter.morse_encryption("test 2"), "- . ... -  ..---")
 
 unittest.main()
