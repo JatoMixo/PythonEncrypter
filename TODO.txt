@@ -1,7 +1,6 @@
  - Encryption/Decryption methods
   - Popular/Already invented
    - Numeral / Different bases
-   - Morse Code
    - AES Code
    - Base64
   - Own Code
