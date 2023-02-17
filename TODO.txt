@@ -1,7 +1,3 @@
  - Encryption/Decryption methods
   - Popular/Already invented
-   - Numeral / Different bases
    - AES Code
-   - Base64
-  - Own Code
-   - With key

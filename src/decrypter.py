@@ -1,6 +1,7 @@
 from src.encrypter import Encrypter
+from src.encrypter import process_last_element
 from src.morse_translated import morse_translation
-from src.words_parser import parse_words
+from src.words_parser import parse_words, parse_int
 from src.element_finder import find_by_second_element
 from math import pow
 
@@ -41,5 +42,21 @@ class Decrypter:
         continue
 
       decrypted_message += find_by_second_element(morse_translation, morse_char)
+
+    return decrypted_message
+  
+  def wave_decryption(self, message, key):
+
+    nums_parsed = parse_int(message)
+
+    decrypted_message = ""
+
+    for index, number in enumerate(nums_parsed):
+      
+      if number == "":
+        decrypted_message += " "
+        continue
+
+      decrypted_message += chr(number - int(pow(int(key[index % len(key)]), 2)))
 
     return decrypted_message

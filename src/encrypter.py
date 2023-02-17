@@ -81,3 +81,17 @@ class Encrypter:
       encrypted_message += process_last_element(index_of_word, words_parsed, "  ") 
 
     return encrypted_message
+  
+  def wave_encryption(self, message, key):
+
+    encrypted_message = ""
+
+    for index, character in enumerate(message):
+
+      if character == " ":
+        encrypted_message += process_last_element(index, message, " ")
+        continue
+
+      encrypted_message += str(int(ord(character) + pow(int(key[index % len(key)]), 2))) + process_last_element(index, message, " ")
+    
+    return encrypted_message
