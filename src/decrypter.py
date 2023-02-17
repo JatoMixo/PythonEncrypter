@@ -1,8 +1,7 @@
-from src.encrypter import Encrypter
-from src.encrypter import process_last_element
-from src.morse_translated import morse_translation
-from src.words_parser import parse_words, parse_int
-from src.element_finder import find_by_second_element
+from encrypter import Encrypter
+from morse_translated import morse_translation
+from words_parser import parse_words, parse_int
+from element_finder import find_by_second_element
 from math import pow
 
 class Decrypter:

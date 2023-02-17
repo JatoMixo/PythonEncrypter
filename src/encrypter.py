@@ -1,6 +1,6 @@
 from math import floor
-from src.words_parser import parse_words
-from src.morse_translated import morse_translation
+from words_parser import parse_words
+from morse_translated import morse_translation
 
 def process_last_element(index, array, addition):
 
