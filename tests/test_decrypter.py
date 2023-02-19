@@ -1,5 +1,5 @@
 import unittest
-from src.decrypter import *
+from decrypter import *
 
 class TestDecrypter(unittest.TestCase):
 
