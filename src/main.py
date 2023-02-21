@@ -1,6 +1,7 @@
 import customtkinter
 import encrypter
 import decrypter
+from pyperclip import copy
 
 method = "Wave"
 
@@ -27,13 +28,16 @@ def main():
 
   # Keys entry
   key_entry = customtkinter.CTkEntry(master=main_frame, placeholder_text="Key", font=("Mononoki NF", 16))
-  key_entry.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.W + customtkinter.E)
+  key_entry.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.W)# + customtkinter.E)
   
   only_words_switch = customtkinter.CTkSwitch(master=main_frame, text="Only words", font=("Mononoki NF", 16))
 
   # /Keys Entry
   # Method selector
+
   def update_encryption_system(choice):
+
+    global method
     method = choice
 
     key_entry.grid_remove()
@@ -61,7 +65,13 @@ def main():
   second_textbox.grid(padx=10, pady=10, column=1, row=1)
 
   def decrypt():
-    message = first_textbox.get("0.0", "end")
+
+    global method
+
+    message = str(first_textbox.get("0.0", "end"))
+
+    message.removesuffix("\n")
+
     key = key_entry.get()
     only_words = bool(only_words_switch.get())
 
@@ -78,18 +88,68 @@ def main():
     elif method == "Morse":
       decrypted_message = decrypter.Decrypter().morse_decryption(message)
 
+    second_textbox.configure(state="normal")
     second_textbox.delete("0.0", "end")
     second_textbox.insert("0.0", decrypted_message)
+    second_textbox.configure(state="disabled")
 
   def encrypt():
-    pass
+    
+    global method
 
-  encrypt_button = customtkinter.CTkButton(master=main_frame, text="Encrypt", font=("Mononoki NF", 16))
+    message = str(first_textbox.get("0.0", "end"))
+
+    message = message.removesuffix("\n")
+
+    key = key_entry.get()
+    only_words = bool(only_words_switch.get())
+
+    encrypted_message = ""
+
+    if method == "Wave":
+      encrypted_message = encrypter.Encrypter().wave_encryption(message, key)
+    elif method == "Cesar":
+      encrypted_message = encrypter.Encrypter().cesar_encryption(message, key)
+    elif method == "Reverse":
+      encrypted_message = encrypter.Encrypter().reverse_encryption(message, only_words)
+    elif method == "Binary":
+      encrypted_message = encrypter.Encrypter().binary_encryption(message)
+    elif method == "Morse":
+      encrypted_message = encrypter.Encrypter().morse_encryption(message)
+    
+    second_textbox.configure(state="normal")
+    second_textbox.delete("0.0", "end")
+    second_textbox.insert("0.0", encrypted_message)
+    second_textbox.configure(state="disabled")
+
+  encrypt_button = customtkinter.CTkButton(master=main_frame, text="Encrypt", font=("Mononoki NF", 16), command=encrypt)
   encrypt_button.grid(padx=10, pady=10, column=1, row=2, sticky=customtkinter.W)
 
   decrypt_button = customtkinter.CTkButton(master=main_frame, text="Decrypt", font=("Mononoki NF", 16), command=decrypt)
   decrypt_button.grid(padx=10, pady=10, row=2, column=0, sticky=customtkinter.E)
 
+  def copy_to_clipboard():
+
+    global method
+
+    second_textbox_text = str(second_textbox.get("0.0", "end"))
+    second_textbox_text.removesuffix("\n")
+    key = str(key_entry.get())
+    only_words = str(bool(only_words_switch.get()))
+
+    message = ""
+
+    if method == "Wave" or method == "Cesar":
+      message = f"Key: {key}\nMessage: {second_textbox_text}"
+    if method == "Reverse":
+      message = f"Only-Words: {only_words}\nMessage: {second_textbox_text}"
+    if method == "Morse" or method == "Binary":
+      message = f"Message: {second_textbox_text}"
+
+    copy(message)
+
+  copy_text_button = customtkinter.CTkButton(master=main_frame, text="Copy", width=40, command=copy_to_clipboard)
+  copy_text_button.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.E)
   root.mainloop()
 
 if __name__ == "__main__":

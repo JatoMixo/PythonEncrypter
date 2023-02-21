@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "/home/jatomixo/Code/PythonEncrypter/src")
 import unittest
 from decrypter import *
 
@@ -28,6 +30,6 @@ class TestDecrypter(unittest.TestCase):
   
   def test_wave_decryption(self):
     self.set_defaults()
-    self.assertEqual(self.decrypter.wave_decryption("88 108 98 120  67", "12"), "What ?")
+    self.assertEqual(self.decrypter.wave_decryption("2488 2604 2498 2616  2563", "12"), "What ?")
 
 unittest.main()

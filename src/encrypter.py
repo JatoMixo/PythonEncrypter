@@ -29,6 +29,10 @@ class Encrypter:
 
   def cesar_encryption(self, message, jumps=3):
 
+    if jumps == '':
+      jumps = 0
+
+    jumps = int(jumps)
     new_message = ""
 
     for i in message:
@@ -84,6 +88,9 @@ class Encrypter:
   
   def wave_encryption(self, message, key):
 
+    if key == "":
+      raise Exception("Invalid key.")
+
     encrypted_message = ""
 
     for index, character in enumerate(message):
@@ -92,6 +99,6 @@ class Encrypter:
         encrypted_message += process_last_element(index, message, " ")
         continue
 
-      encrypted_message += str(int(ord(character) + pow(int(key[index % len(key)]), 2))) + process_last_element(index, message, " ")
+      encrypted_message += str(int(ord(character) + pow(ord(key[index % len(key)]), 2))) + process_last_element(index, message, " ")
     
     return encrypted_message

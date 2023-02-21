@@ -4,4 +4,4 @@ def find_by_second_element(dictionary, element):
     if dictionary[i] == element:
       return i
   
-  raise Exception("Exception: Didn't find element in list.")
+  raise Exception(f"Exception: Didn't find element in {dictionary}: {element}")

@@ -7,7 +7,11 @@ from math import pow
 class Decrypter:
 
   def cesar_decryption(self, message, jumps=3):
-    return Encrypter().cesar_encryption(message, -jumps)
+
+    if jumps == '':
+      jumps = 0
+    
+    return Encrypter().cesar_encryption(message, -int(jumps))
 
   def binary_decryption(self, message):
     binary_parsed = parse_words(message)
@@ -27,6 +31,7 @@ class Decrypter:
     return decrypted_message
   
   def reverse_decryption(self, message,  only_words=False):
+    message = message.removesuffix("\n")
     return Encrypter().reverse_encryption(message, only_words)
   
   def morse_decryption(self, message):
@@ -46,6 +51,9 @@ class Decrypter:
   
   def wave_decryption(self, message, key):
 
+    if key == "":
+      raise Exception("Invalid key.")
+
     nums_parsed = parse_int(message)
 
     decrypted_message = ""
@@ -56,6 +64,6 @@ class Decrypter:
         decrypted_message += " "
         continue
 
-      decrypted_message += chr(number - int(pow(int(key[index % len(key)]), 2)))
+      decrypted_message += chr(number - int(pow(ord(key[index % len(key)]), 2)))
 
     return decrypted_message

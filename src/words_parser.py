@@ -3,7 +3,7 @@ def parse_words(string):
   words = [""]
 
   for i in string:
-    if i == " ":
+    if i == " " or i == "\n":
       words.append("")
       continue
 

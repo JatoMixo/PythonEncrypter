@@ -1,5 +1,7 @@
+import sys
+sys.path.insert(0, "/home/jatomixo/Code/PythonEncrypter/src")
 import unittest
-from src.encrypter import * 
+from encrypter import * 
 
 class TestEncrypter(unittest.TestCase):
 
@@ -28,6 +30,6 @@ class TestEncrypter(unittest.TestCase):
   
   def test_wave_encryption(self):
     self.set_defaults()
-    self.assertEqual(self.encrypter.wave_encryption("What ?", "12"), "88 108 98 120  67")
+    self.assertEqual(self.encrypter.wave_encryption("What ?", "12"), "2488 2604 2498 2616  2563")
 
 unittest.main()
