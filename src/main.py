@@ -28,7 +28,7 @@ def main():
 
   # Keys entry
   key_entry = customtkinter.CTkEntry(master=main_frame, placeholder_text="Key", font=("Mononoki NF", 16))
-  key_entry.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.W)# + customtkinter.E)
+  key_entry.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.W)
   
   only_words_switch = customtkinter.CTkSwitch(master=main_frame, text="Only words", font=("Mononoki NF", 16))
 
@@ -47,11 +47,11 @@ def main():
       return
     
     if choice == "Wave" or choice == "Cesar":
-      key_entry.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.E + customtkinter.W)
+      key_entry.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.W)
       return
     
     if choice == "Reverse":
-      only_words_switch.grid(padx=10, pady=10, column=1, row=0)
+      only_words_switch.grid(padx=10, pady=10, column=1, row=0, sticky=customtkinter.W)
 
   method_selector = customtkinter.CTkComboBox(master=main_frame, values=["Wave", "Binary", "Morse", "Reverse", "Cesar"], font=("Mononoki NF", 15), state="readonly", command=update_encryption_system)
   method_selector.set("Wave")
